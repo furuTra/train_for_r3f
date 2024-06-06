@@ -10,9 +10,9 @@ import styles from "./components/cube/Cube.module.css";
 const TestApp: FC = () => {
   return (
     <div className={styles.cube__app}>
-      <VRButton />
+      {/* <VRButton /> */}
       <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
-        <XR>
+        {/* <XR> */}
           <ambientLight args={[0xff0000]} intensity={0.1} />
           <pointLight position={[10, 10, 5]} />
           <pointLight position={[-10, -10, -10]} />
@@ -20,7 +20,7 @@ const TestApp: FC = () => {
           <OrbitControls makeDefault />
           <SelectHello />
           {/* <Hello /> */}
-        </XR>
+        {/* </XR> */}
       </Canvas>
     </div>
   );

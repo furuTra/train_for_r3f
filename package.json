@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "r3f-pack start",
+    "build:pack": "r3f-pack build"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.9",
@@ -36,6 +38,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-react": "^7.32.0",
     "prettier": "2.8.3",
+    "r3f-pack": "^2.8.1",
     "react-router-dom": "^6.8.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
