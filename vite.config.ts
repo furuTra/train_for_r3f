@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     outDir: "dist"
   },
-  base: process.env.GITHUB_PAGES ? 'train_for_r3f' :'./',
+  base: process.env.GITHUB_PAGES ? '/train_for_r3f/' :'./',
   server: {
     watch: {
       usePolling: true
