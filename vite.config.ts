@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "build"
+    outDir: "dist"
   },
-  base: './',
+  base: process.env.GITHUB_PAGES ? 'train_for_r3f' :'./',
   server: {
     watch: {
       usePolling: true
