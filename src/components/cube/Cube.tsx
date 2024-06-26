@@ -1,10 +1,10 @@
-import { useFrame } from "@react-three/fiber";
+import { MeshProps, useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import { Select } from "@react-three/postprocessing";
-import { FC, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { Mesh } from "three";
 
-export const Cube: FC = () => {
+export default function Cube(props: MeshProps) {
   const cubeRef = useRef<Mesh>(null);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
@@ -23,7 +23,7 @@ export const Cube: FC = () => {
         scale={clicked ? 1.5 : 1}
         onPointerOver={(event) => hover(true)}
         onPointerOut={(event) => hover(false)}
-        position={[1, 0, 0]}
+        position={props.position}
       >
         <boxGeometry args={[1, 1, 1]} />
         <meshPhongMaterial
@@ -37,4 +37,4 @@ export const Cube: FC = () => {
       </mesh>
     </Select>
   );
-};
+}

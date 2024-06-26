@@ -3,7 +3,8 @@ import * as THREE from "three";
 import { useControls } from "leva";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Polyhedron from "./Polyhedron";
+import SelectCube from "./components/cube/SelectCube";
+import Polyhedron from "./components/polyhedron/Polyhedron";
 import styles from "./components/cube/Cube.module.css";
 
 export default function AppMain() {
@@ -24,8 +25,16 @@ export default function AppMain() {
       color: { value: "lime" },
     };
   }, []);
+  const cubeOptions = useMemo(() => {
+    return {
+      posX: { value: 1, min: -5, max: 5, step: 0.1 },
+      posY: { value: 1, min: -5, max: 5, step: 0.1 },
+      posZ: { value: 1, min: -5, max: 5, step: 0.1 },
+    };
+  }, []);
   const pA = useControls("Polyhedron A", options);
   const pB = useControls("Polyhedron B", options);
+  const cA = useControls("Cube A", cubeOptions);
   return (
     <div className={styles.cube__app}>
       <Canvas camera={{ position: [1, 2, 3] }}>
@@ -45,6 +54,7 @@ export default function AppMain() {
           polyhedron={polyhedron}
         />
         <OrbitControls target-y={1} />
+        <SelectCube position={[cA.posX, cA.posY, cA.posZ]} />
         <axesHelper args={[5]} />
         <gridHelper />
       </Canvas>
