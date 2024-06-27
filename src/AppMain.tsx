@@ -29,11 +29,11 @@ export default function AppMain() {
   const cubeOptions = useMemo(() => {
     return {
       posX: { value: 1, min: -5, max: 5, step: 0.1 },
-      posY: { value: 1, min: -5, max: 5, step: 0.1 },
+      posY: { value: 4, min: -5, max: 5, step: 0.1 },
       posZ: { value: 1, min: -5, max: 5, step: 0.1 },
     };
   }, []);
-  const pA = useControls("Polyhedron A", options);
+  // const pA = useControls("Polyhedron A", options);
   const pB = useControls("Polyhedron B", options);
   const cA = useControls("Cube A", cubeOptions);
   return (
@@ -41,14 +41,15 @@ export default function AppMain() {
       <ARButton />
       <Canvas camera={{ position: [1, 2, 3] }}>
         <XR referenceSpace="local">
-          <directionalLight position={[1, 1, 1]} intensity={0.8} />
-          <Polyhedron
+          <directionalLight position={[10, 1, 10]} intensity={0.8} />
+          <directionalLight position={[-10, 1, -10]} intensity={0.8} />
+          {/* <Polyhedron
             position={[-1, 1, 0]}
             rotation={[pA.x, pA.y, pA.z]}
             visible={pA.visible}
             color={pA.color}
             polyhedron={polyhedron}
-          />
+          /> */}
           <Polyhedron
             position={[1, 1, 0]}
             rotation={[pB.x, pB.y, pB.z]}
@@ -60,6 +61,7 @@ export default function AppMain() {
           <SelectCube position={[cA.posX, cA.posY, cA.posZ]} />
           <axesHelper args={[5]} />
           <gridHelper />
+          <Controllers />
         </XR>
       </Canvas>
     </div>
