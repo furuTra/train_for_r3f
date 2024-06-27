@@ -40,7 +40,7 @@ export default function AppMain() {
     <div className={styles.cube__app}>
       <ARButton />
       <Canvas camera={{ position: [1, 2, 3] }}>
-        <XR>
+        <XR referenceSpace="local">
           <directionalLight position={[1, 1, 1]} intensity={0.8} />
           <Polyhedron
             position={[-1, 1, 0]}
