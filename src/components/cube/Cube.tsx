@@ -3,6 +3,7 @@ import { Html } from "@react-three/drei";
 import { Select } from "@react-three/postprocessing";
 import { useRef, useState } from "react";
 import type { Mesh } from "three";
+import { Interactive } from "@react-three/xr";
 
 export default function Cube(props: MeshProps) {
   const cubeRef = useRef<Mesh>(null);
@@ -17,24 +18,30 @@ export default function Cube(props: MeshProps) {
   });
   return (
     <Select enabled={hovered}>
-      <mesh
-        ref={cubeRef}
-        onClick={(event) => click(!clicked)}
-        scale={clicked ? 1.5 : 1}
-        onPointerOver={(event) => hover(true)}
-        onPointerOut={(event) => hover(false)}
-        position={props.position}
+      <Interactive
+        onHover={() => hover(true)}
+        onBlur={() => hover(false)}
+        onSelect={() => click(!clicked)}
       >
-        <boxGeometry args={[1, 1, 1]} />
-        <meshPhongMaterial
-          color={hovered ? "orange" : "aqua"}
-          transparent
-          opacity={0.7}
-        />
-        <Html occlude distanceFactor={5} position={[0, 0, 0.51]} transform>
-          <span>hello</span>
-        </Html>
-      </mesh>
+        <mesh
+          ref={cubeRef}
+          onClick={(event) => click(!clicked)}
+          scale={clicked ? 1.5 : 1}
+          onPointerOver={(event) => hover(true)}
+          onPointerOut={(event) => hover(false)}
+          position={props.position}
+        >
+          <boxGeometry args={[1, 1, 1]} />
+          <meshPhongMaterial
+            color={hovered ? "orange" : "aqua"}
+            transparent
+            opacity={0.7}
+          />
+          <Html occlude distanceFactor={5} position={[0, 0, 0.51]} transform>
+            <span>hello</span>
+          </Html>
+        </mesh>
+      </Interactive>
     </Select>
   );
 }
