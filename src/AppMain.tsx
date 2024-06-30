@@ -29,7 +29,7 @@ export default function AppMain() {
   const cubeOptions = useMemo(() => {
     return {
       posX: { value: 1, min: -5, max: 5, step: 0.1 },
-      posY: { value: 4, min: -5, max: 5, step: 0.1 },
+      posY: { value: 2, min: -5, max: 5, step: 0.1 },
       posZ: { value: 1, min: -5, max: 5, step: 0.1 },
     };
   }, []);
@@ -39,10 +39,10 @@ export default function AppMain() {
   return (
     <div className={styles.cube__app}>
       <ARButton />
-      <Canvas camera={{ position: [1, 2, 3] }}>
+      <Canvas camera={{ position: [5, 5, 5], fov: 75, near: 0.1, far: 2000 }}>
         <XR referenceSpace="local">
-          <directionalLight position={[10, 1, 10]} intensity={0.8} />
-          <directionalLight position={[-10, 1, -10]} intensity={0.8} />
+          <ambientLight />
+          {/* <directionalLight position={[10, 1, 10]} intensity={0.8} /> */}
           {/* <Polyhedron
             position={[-1, 1, 0]}
             rotation={[pA.x, pA.y, pA.z]}

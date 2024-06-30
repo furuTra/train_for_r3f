@@ -12,9 +12,9 @@ export default function Cube(props: MeshProps) {
   useFrame(() => {
     const cube = cubeRef.current;
     if (!cube) return;
-    cube.rotation.x += 0.002;
-    cube.rotation.y += 0.002;
-    cube.rotation.z += 0.002;
+    // cube.rotation.x += 0.001;
+    cube.rotation.y += 0.001;
+    // cube.rotation.z += 0.001;
   });
   return (
     <Select enabled={hovered}>
