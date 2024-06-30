@@ -6,7 +6,7 @@ import SelectCube from "./components/cube/SelectCube";
 import Polyhedron from "./components/polyhedron/Polyhedron";
 import { XR, Controllers } from "@react-three/xr";
 
-export default function Scene() {
+const Scene = () => {
   const polyhedron = useMemo(
     () => [
       new THREE.BoxGeometry(),
@@ -54,4 +54,6 @@ export default function Scene() {
       </XR>
     </>
   );
-}
+};
+
+export default Scene;
